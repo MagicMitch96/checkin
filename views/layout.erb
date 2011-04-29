@@ -1,11 +1,31 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Conference Check In</title>
-	</head>
-	<body>
-		<div id="main">
-			<%= yield %>
-		</div>		
-	</body>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<title>Check In</title>
+	
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<header>
+		<h1>Check In</h1>
+		<nav>
+			<ul>
+				<li id="individuals" class="active">Individuals</li>
+				<li id="groups">Groups</li>
+				<li id="more">More</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="main">
+	  <%= yield %>
+	</div><!-- end main -->
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script src="/js/application.js"></script>
+</body>
 </html>

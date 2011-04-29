@@ -1,0 +1,14 @@
+<% unless @query == '' %>
+  <% if @people.count > 0 %>
+  <ul class="wide_list" id="attendees">
+    <% @people.each do |person| %>
+  	<li>
+  		<div class="content"><%= person.last_name + ", " + person.first_name %><!-- <span class="badge">S</span> --></div>
+  		<div class="drawer"><span class="button first">Details</span><span class="button">Check In</span></div>
+  	</li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p class="nodice">No results matched your query.</p>
+  <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<% unless @query == '' %>
+  <% if @groups.count > 0 %>
+  <ul class="wide_list" id="groups">
+    <% @groups.each do |group| %>
+    <li>
+      <div class="content" id="<%= group.group.gsub(' ', '-') %>"><%= group.group %><span class="arrow">&gt;</span></div>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p class="nodice">No results matched your query.</p>
+  <% end %>  
+<% end %>

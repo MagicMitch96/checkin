@@ -11,7 +11,7 @@ class Attendee
   property :first_name, String
   property :last_name, String
   property :email, String
-  property :group, String
+  property :group, String, :index => true
   property :type, String
   property :checked_in, Boolean, :default => false
 end
