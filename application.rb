@@ -2,6 +2,9 @@ require 'rubygems'
 require 'sinatra'
 require 'lib/models'
 
+use Rack::Auth::Basic do |username, password|
+  [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
+end
 
 get '/' do
   redirect '/individuals'
