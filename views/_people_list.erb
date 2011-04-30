@@ -1,8 +1,15 @@
 <ul class="wide_list" id="attendees">
   <% @people.each do |person| %>
-	<li id="<%= person.id %>">
+	<li id="<%= person.id %>"<%= ' class="checked_in"' if person.checked_in? %>>
 		<div class="content"><%= person.last_name + ", " + person.first_name %><!-- <span class="badge">S</span> --></div>
-		<div class="drawer"><span class="button first">Details</span><span class="button">Check In</span></div>
+		<div class="drawer">
+			<span class="button first details">Details</span>
+			<% if person.checked_in? %>
+			<span class="button checkin checked_in">Checked In</span>
+			<% else %>
+			<span class="button checkin">Check In</span>			
+			<% end %>
+		</div>
 	</li>
   <% end %>
 </ul>

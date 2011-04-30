@@ -38,6 +38,16 @@ get '/individuals/search' do
   erb :search_people, :layout => !request.xhr?
 end
 
+post '/checkin' do
+  @person = Attendee.get(params[:id])
+  @person.update(:checked_in => true)
+end
+
+post '/checkout' do
+  @person = Attendee.get(params[:id])
+  @person.update(:checked_in => false)
+end
+
 get '/groups' do
   erb :alpha, :layout => !request.xhr?
 end

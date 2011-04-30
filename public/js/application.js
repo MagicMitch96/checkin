@@ -46,10 +46,27 @@ $(document).ready(function() {
   quickClick($('ul#attendees li .content'), function(target) {
     target.toggleDrawer();
   });
+
+	// check attendees in and out
+	quickClick($('ul#attendees li .drawer .button.checkin'), function(target) {
+		if (target.hasClass('checked_in')) {
+			$.post('/checkout', {'id':target.parents('li').attr('id')}, function() {
+				target.removeClass('checked_in');
+				target.html('Check In');
+				target.parents('li').removeClass('checked_in');
+			});						
+		} else {
+			$.post('/checkin', {'id':target.parents('li').attr('id')}, function() {
+				target.addClass('checked_in');
+				target.html('Checked In');
+				target.parents('li').addClass('checked_in');
+			});			
+		}
+	});
   
   // go to list of group attendess when clicking on a group name
   quickClick($('ul#groups li .content'), function(target) {
-    $.get('/groups/' + target.parent('li').attr('id'), null, function (data) {
+    $.get('/groups/' + target.parent('li').attr('id'), null, function(data) {
       $("#main").html(data);
     });
   });
@@ -57,7 +74,7 @@ $(document).ready(function() {
   // go to list of attendess or groups with the selected letter
   quickClick($('table.alpha td'), function(target) {
     active = $('nav ul li.active').attr('id');
-    $.get('/' + active + '/alpha/' + target.html(), null, function (data) {
+    $.get('/' + active + '/alpha/' + target.html(), null, function(data) {
       $("#main").html(data);
     });
   });
