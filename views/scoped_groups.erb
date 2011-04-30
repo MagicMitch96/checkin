@@ -1,10 +1,4 @@
 <ul class="scope">
 	<li><%= @scope %><span class="reset">X</span></li>
 </ul><!-- end scope -->
-<ul class="wide_list" id="groups">
-  <% @groups.each do |group| %>
-  <li>
-  	<div class="content" id="<%= group.group.gsub(' ', '-') %>"><%= group.group %><span class="arrow">&gt;</span></div>
-  </li>
-  <% end %>
-</ul>
+<%= partial :groups_list, :collection => @groups %>

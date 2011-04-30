@@ -1,11 +1,4 @@
 <ul class="scope">
 	<li><%= @scope %><span class="reset">X</span></li>
 </ul><!-- end scope -->
-<ul class="wide_list" id="attendees">
-  <% @people.each do |person| %>
-	<li>
-		<div class="content"><%= person.last_name + ", " + person.first_name %><!-- <span class="badge">S</span> --></div>
-		<div class="drawer"><span class="button first">Details</span><span class="button">Check In</span></div>
-	</li>
-  <% end %>
-</ul>
+<%= partial :people_list, :collection => @people %>

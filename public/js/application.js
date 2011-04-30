@@ -49,7 +49,7 @@ $(document).ready(function() {
   
   // go to list of group attendess when clicking on a group name
   quickClick($('ul#groups li .content'), function(target) {
-    $.get('/groups/' + target.attr('id'), null, function (data) {
+    $.get('/groups/' + target.parent('li').attr('id'), null, function (data) {
       $("#main").html(data);
     });
   });

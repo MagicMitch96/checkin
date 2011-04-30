@@ -6,6 +6,17 @@ use Rack::Auth::Basic do |username, password|
   [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
 end
 
+helpers do
+  def partial(template, *args)
+    template_array = template.to_s.split('/')
+    template = template_array[0..-2].join('/') + "/_#{template_array[-1]}"
+    options = args.last.is_a?(Hash) ? args.pop : {}
+    options.merge!(:layout => false)    
+    erb(:"#{template}", options)
+  end
+end
+
+
 get '/' do
   redirect '/individuals'
   erb :alpha, :layout => !request.xhr?
