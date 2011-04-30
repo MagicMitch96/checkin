@@ -1,1 +1,87 @@
-Everything else.
+<h2>Reports</h2>
+<p id="stats">
+	<strong><%= @checked_in.count %></strong> of <strong><%= @people.count %></strong> people have checked in.<br />
+	That's about <strong><%= ((@checked_in.count.to_f / @people.count.to_f) * 100).round %>%</strong>.
+</p>
+
+<h2>Schedule</h2>
+<div id="schedule_wrapper">
+<h3><strong>Wednesday</strong>, July 27</h3> 
+<table class="schedule"> 
+	<tr>
+		<td class="schedule_time">1:00pm</td>
+		<td class="schedule_event minor">Registration Opens</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">3:00 - 3:50pm</td>
+		<td class="schedule_event normal">Breakout Session 1</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">4:00 - 4:50pm</td>
+		<td class="schedule_event normal">Breakout Session 2</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">5:00pm</td>
+		<td class="schedule_event minor">Dinner (provided)</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">7:00 - 8:30pm</td>
+		<td class="schedule_event major">Keynote 1</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">8:30 - 10:00pm</td>
+		<td class="schedule_event minor">Echo After Hours</td>
+	</tr>
+</table> 
+<h3><strong>Thursday</strong>, July 28</h3> 
+<table class="schedule"> 
+	<tr>
+		<td class="schedule_time">9:00 - 9:50am</td>
+		<td class="schedule_event normal">Breakout Session 3</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">10:00 - 11:25am</td>
+		<td class="schedule_event major">Keynote 2</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">11:30am</td>
+		<td class="schedule_event minor">Lunch (provided)</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">1:00 - 1:50pm</td>
+		<td class="schedule_event normal">Breakout Session 4</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">2:00pm</td>
+		<td class="schedule_event minor">Snack and Meetup</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">3:00 - 3:50pm</td>
+		<td class="schedule_event normal">Breakout Session 5</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">4:00 - 5:50pm</td>
+		<td class="schedule_event major">Keynote 3</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">6:00pm</td>
+		<td class="schedule_event minor">Dinner (not provided)</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">7:30 - 10:00pm</td>
+		<td class="schedule_event minor">Echo After Hours</td>
+	</tr>
+</table> 
+<h3><strong>Friday</strong>, July 29</h3> 
+<table class="schedule last"> 
+	<tr>
+		<td class="schedule_time">9:00 - 9:50am</td>
+		<td class="schedule_event normal">Breakout Session 6</td>
+	</tr>
+	<tr>
+		<td class="schedule_time">10:00 - 11:30am</td>
+		<td class="schedule_event major">Keynote 4</td>
+	</tr>
+</table>
+</div>
+<h2>Maps</h2>

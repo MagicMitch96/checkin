@@ -19,8 +19,8 @@ end
 
 get '/' do
   redirect '/individuals'
-  erb :alpha, :layout => !request.xhr?
 end
+
 
 get '/individuals' do
   erb :alpha, :layout => !request.xhr?
@@ -38,6 +38,7 @@ get '/individuals/search' do
   erb :search_people, :layout => !request.xhr?
 end
 
+
 post '/checkin' do
   @person = Attendee.get(params[:id])
   @person.update(:checked_in => true)
@@ -47,6 +48,7 @@ post '/checkout' do
   @person = Attendee.get(params[:id])
   @person.update(:checked_in => false)
 end
+
 
 get '/groups' do
   erb :alpha, :layout => !request.xhr?
@@ -70,9 +72,13 @@ get '/groups/:group' do
   erb :scoped_people, :layout => !request.xhr?
 end
 
+
 get '/more' do
+  @people = Attendee.all(:fields => [:id, :checked_in])
+  @checked_in = @people.all(:checked_in => true)
   erb :more, :layout => !request.xhr?
 end
+
 
 # accessbile from desktop browser for setup
 

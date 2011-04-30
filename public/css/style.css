@@ -1,3 +1,7 @@
+/*---------------------------------
+--- RESET AND STANDARDIZATION ---
+---------------------------------*/
+
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
@@ -70,6 +74,11 @@ a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
 
+
+/*-----------------------
+--- CHECK IN STYLES ---
+-----------------------*/
+
 body { -webkit-user-select: none; }
 
 header { background: #444; }
@@ -87,6 +96,9 @@ header h1 {
   line-height: 56px;
   text-align: center;
 }
+
+
+/*-- NAVIGATION --*/
 
 nav ul { text-align: center; }
 
@@ -111,6 +123,9 @@ nav ul { text-align: center; }
   nav ul li.active { 
     background: #232323; 
   }
+
+
+/*-- SEARCH AND SEARCH RESULTS --*/
 
 #search {
   padding: 6px 0;
@@ -149,6 +164,9 @@ nav ul { text-align: center; }
   line-height: 56px;
   padding-left: 10px;
 }
+
+
+/*-- ALPHABET TABLE --*/
 
 table.alpha {
   border-right: 1px solid #eee;
@@ -190,6 +208,9 @@ table.alpha {
     );
   }
 
+
+/*-- SCOPE TAB --*/
+
 ul.scope { 
   padding: 15px 0;
   margin: 0;
@@ -222,6 +243,9 @@ ul.scope {
       width: 32px;
       text-align: center;
     }
+
+
+/*-- FULL-WIDTH LIST -*/
 
 ul.wide_list {
   margin: 0;
@@ -354,3 +378,81 @@ ul.wide_list {
     
     ul.wide_list li .drawer .button.first { margin-left: 0; }
       
+/*-- MORE --*/
+
+h2 {
+  font-size: 18px;
+  line-height: 32px;
+  color: #efefef;
+  background: #333;
+  width: 100%;
+  text-indent: 8px;
+  /*text-transform: uppercase;*/
+}
+
+#stats {
+  font-size: 15px;
+  padding: 12px;
+  line-height: 21px;
+}
+
+/*- SCHEDULE -*/
+
+#schedule_wrapper {
+  width: 320px;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
+h3 {
+  color: #333;
+  line-height: 24px;
+  background: #fbb03b;
+  width: 100%;
+  text-indent: 8px;
+  font-weight: normal;
+  /*text-align: center;*/
+  text-transform: uppercase;
+}
+
+.schedule { 
+  color: #333; 
+  font-size: 12px; 
+  width: 100%;
+  border-bottom: 1px solid #999;
+  background: #e6e6e6;
+}
+
+  .schedule.last { border-bottom: none; }
+
+  .schedule tr td { 
+    border-top: 1px solid #999; 
+    padding: 10px; 
+  }
+
+    .schedule tr td.schedule_time {
+      color: #666;
+      text-align: right;
+      border-right: 1px solid #999;
+      width: 90px;
+      vertical-align: middle;
+    }
+
+    .schedule tr td.schedule_event {
+      font-weight: bold;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .schedule tr td.schedule_event.major {
+      font-size: 16px;
+      padding: 20px 10px;
+    }
+
+    .schedule tr td.schedule_event.minor {
+      color: #444;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: normal;
+      background-color: #b3b3b3;
+    }
