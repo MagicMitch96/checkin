@@ -47,6 +47,11 @@ $(document).ready(function() {
     target.toggleDrawer();
   });
 
+	// show/hide attendee details
+	quickClick($('ul#attendees li .drawer .button.details'), function(target) {
+			target.siblings('.details_box').slideToggle('fast');
+	});
+
 	// check attendees in and out
 	quickClick($('ul#attendees li .drawer .button.checkin'), function(target) {
 		if (target.hasClass('checked_in')) {

@@ -9,6 +9,14 @@
 			<% else %>
 			<span class="button checkin">Check In</span>			
 			<% end %>
+			<div class="details_box">
+				<p>
+					<% if person.group && person.group != '' %>
+					<strong><%= person.group %></strong><br>
+					<% end %>
+					<%= person.email %>
+				</p>			
+		</div>
 		</div>
 	</li>
   <% end %>

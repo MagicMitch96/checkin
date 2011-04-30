@@ -377,6 +377,24 @@ ul.wide_list {
     }
     
     ul.wide_list li .drawer .button.first { margin-left: 0; }
+    
+    ul.wide_list li .drawer .details_box {
+      display: none;
+      background: #fff;
+      width: 90%;
+      margin-bottom: 12px;
+      position: relative;
+      border-radius: 4px;
+      padding: 0 14px;
+      -webkit-box-shadow: inset 0 0 3px #000;
+    }
+          
+      ul.wide_list li .drawer .details_box p {
+        font-size: 14px;
+        color: #444;
+        line-height: 21px;
+        padding: 14px 0;
+      }
       
 /*-- MORE --*/
 
