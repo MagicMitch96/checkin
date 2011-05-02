@@ -22,17 +22,27 @@ $.fn.extend({
   		  }
   		});
   	});
-  } // end quickClick
+  }, // end quickClick
+  
+  loadingScreen: function() {
+    this.html('<div class="spinner"><div class="bar1"></div><div class="bar2"></div><div class="bar3"></div><div class="bar4"></div><div class="bar5"></div><div class="bar6"></div><div class="bar7"></div><div class="bar8"></div>');
+  } // end loadingScreen
 });
+
+function delayedLoadingScreen() {
+  return setTimeout("$('#main').loadingScreen()", 200);
+}
 
 $(document).ready(function() {
     
   // tab navigation and state change
   $('nav ul li').quickClick(function(target) {
+    loading = delayedLoadingScreen();
     tab = target.attr('id');
     $('nav ul li').removeClass('active');
     $('nav ul li#' + tab).addClass('active');
     $.get('/' + tab, null, function (data) {
+      clearTimeout(loading);
       $("#main").html(data);
     });
   });
@@ -73,15 +83,19 @@ $(document).ready(function() {
   
   // go to list of group attendess when clicking on a group name
   $('ul#groups li .content').quickClick(function(target) {
+    loading = delayedLoadingScreen();
     $.get('/groups/' + target.parent('li').attr('id'), null, function(data) {
+      clearTimeout(loading);
       $("#main").html(data);
     });
   });
   
   // go to list of attendess or groups with the selected letter
   $('table.alpha td').quickClick(function(target) {
+    loading = delayedLoadingScreen();
     active = $('nav ul li.active').attr('id');
     $.get('/' + active + '/alpha/' + target.html(), null, function(data) {
+      clearTimeout(loading);
       $("#main").html(data);
     });
   });
@@ -95,8 +109,10 @@ $(document).ready(function() {
 	
 	// remove scope (letter or group) and return to active tab 'home'
 	$('ul.scope li .reset').quickClick(function() {
+	  loading = delayedLoadingScreen();
 	  active = $('nav ul li.active').attr('id');
 	  $.get('/' + active, null, function (data) {
+      clearTimeout(loading);
       $("#main").html(data);
     });
 	});
