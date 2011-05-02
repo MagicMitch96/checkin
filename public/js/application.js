@@ -55,16 +55,22 @@ $(document).ready(function() {
 	// check guests in and out
 	quickClick($('ul#guests li .drawer .button.checkin'), function(target) {
 		if (target.hasClass('checked_in')) {
+		  target.html('Processing');
+		  target.addClass('disabled');
 			$.post('/checkout', {'id':target.parents('li').attr('id')}, function() {
 				target.removeClass('checked_in');
 				target.html('Check In');
 				target.parents('li').removeClass('checked_in');
+        target.removeClass('disabled');
 			});						
 		} else {
+		  target.html('Processing');
+		  target.addClass('disabled');
 			$.post('/checkin', {'id':target.parents('li').attr('id')}, function() {
 				target.addClass('checked_in');
 				target.html('Checked In');
 				target.parents('li').addClass('checked_in');
+				target.removeClass('disabled');
 			});			
 		}
 	});

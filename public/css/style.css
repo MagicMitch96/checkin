@@ -203,8 +203,8 @@ table.alpha {
         linear,
         left top,
         left bottom,
-        color-stop(0, #f3f3f3),
-        color-stop(1, #f9f9f9)
+        color-stop(0, #f1f1f1),
+        color-stop(1, #fbfbfb)
     );
   }
 
@@ -243,6 +243,8 @@ ul.scope {
       width: 32px;
       text-align: center;
     }
+    
+    ul.scope li .reset.pressed { color: #333; }
 
 
 /*-- FULL-WIDTH LIST -*/
@@ -282,8 +284,8 @@ ul.wide_list {
         linear,
         left top,
         left bottom,
-        color-stop(0, #f3f3f3),
-        color-stop(1, #f9f9f9)
+        color-stop(0, #f1f1f1),
+        color-stop(1, #fbfbfb)
     );
   }
   
@@ -348,11 +350,11 @@ ul.wide_list {
           linear,
           left top,
           left bottom,
-          color-stop(0, #d1d1d1),
-          color-stop(1, #e1e1e1)
+          color-stop(0, #c1c1c1),
+          color-stop(1, #f1f1f1)
       );
     }
-    
+        
     ul.wide_list li .drawer .button.checked_in {
       background: #7ac75e;
       background-image: -webkit-gradient(
@@ -371,9 +373,15 @@ ul.wide_list {
           linear,
           left top,
           left bottom,
-          color-stop(0, #13bc4f),
-          color-stop(1, #41c963)
+          color-stop(0, #00ae3e),
+          color-stop(1, #53d874)
       );
+    }
+    
+    ul.wide_list li .drawer .button.disabled {
+      background: #d9d9d9;
+      color: #666;
+      text-shadow: none;
     }
     
     ul.wide_list li .drawer .button.first { margin-left: 0; }
