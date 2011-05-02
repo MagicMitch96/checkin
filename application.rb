@@ -16,6 +16,13 @@ helpers do
   end
 end
 
+before do
+  # everything except the import page is only accessible from mobile browsers
+  unless request.user_agent.downcase.include? 'mobile'
+    redirect '/import' unless (request.path == '/import' || request.path == '/process')
+  end
+end
+
 
 get '/' do
   redirect '/individuals'
