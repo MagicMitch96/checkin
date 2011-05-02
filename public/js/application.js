@@ -1,18 +1,11 @@
 jQuery.ajaxSetup({ 
 	"beforeSend": function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} 
-})
-
-$.fn.extend({
-  toggleDrawer: function() {
-    this.siblings('.drawer').slideToggle('fast');
-  }
 });
 
-$(document).ready(function() {
-    
+$.fn.extend({
   // use touch events to simulate clicks (much more responsive)
-  function quickClick(element, callback) {
-  	element.live('touchstart', function(e) {
+  quickClick: function(callback) {
+    this.live('touchstart', function(e) {
   	  moved = false;
   	  $(this).addClass('pressed');
   		$(this).bind('touchmove', function() {
@@ -29,31 +22,34 @@ $(document).ready(function() {
   		  }
   		});
   	});
-  }
-    
+  } // end quickClick
+});
+
+$(document).ready(function() {
     
   // tab navigation and state change
-  quickClick($('nav ul li'), function(target) {
+  $('nav ul li').quickClick(function(target) {
     tab = target.attr('id');
     $('nav ul li').removeClass('active');
     $('nav ul li#' + tab).addClass('active');
     $.get('/' + tab, null, function (data) {
       $("#main").html(data);
     });
-  })
+  });
   
   // open/close actions drawer for individuals list
-  quickClick($('ul#guests li .content'), function(target) {
-    target.toggleDrawer();
+  $('ul#guests li .content').quickClick(function(target) {
+    target.siblings('.drawer').slideToggle('fast');
+    target.siblings('.drawer').children('.details_box').slideUp('fast');
   });
 
 	// show/hide guest details
-	quickClick($('ul#guests li .drawer .button.details'), function(target) {
+	$('ul#guests li .drawer .button.details').quickClick(function(target) {
 			target.siblings('.details_box').slideToggle('fast');
 	});
 
 	// check guests in and out
-	quickClick($('ul#guests li .drawer .button.checkin'), function(target) {
+	$('ul#guests li .drawer .button.checkin').quickClick(function(target) {
 		if (target.hasClass('checked_in')) {
 		  target.html('Processing');
 		  target.addClass('disabled');
@@ -76,14 +72,14 @@ $(document).ready(function() {
 	});
   
   // go to list of group attendess when clicking on a group name
-  quickClick($('ul#groups li .content'), function(target) {
+  $('ul#groups li .content').quickClick(function(target) {
     $.get('/groups/' + target.parent('li').attr('id'), null, function(data) {
       $("#main").html(data);
     });
   });
   
   // go to list of attendess or groups with the selected letter
-  quickClick($('table.alpha td'), function(target) {
+  $('table.alpha td').quickClick(function(target) {
     active = $('nav ul li.active').attr('id');
     $.get('/' + active + '/alpha/' + target.html(), null, function(data) {
       $("#main").html(data);
@@ -91,14 +87,14 @@ $(document).ready(function() {
   });
 
   // reset search field
-	quickClick($('#search .reset'), function(target) {
+	$('#search .reset').quickClick(function(target) {
 		target.siblings('input').val('');
 		target.hide();
 		$('#search_results').empty();
 	});
 	
 	// remove scope (letter or group) and return to active tab 'home'
-	quickClick($('ul.scope li .reset'), function() {
+	$('ul.scope li .reset').quickClick(function() {
 	  active = $('nav ul li.active').attr('id');
 	  $.get('/' + active, null, function (data) {
       $("#main").html(data);
