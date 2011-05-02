@@ -43,17 +43,17 @@ $(document).ready(function() {
   })
   
   // open/close actions drawer for individuals list
-  quickClick($('ul#attendees li .content'), function(target) {
+  quickClick($('ul#guests li .content'), function(target) {
     target.toggleDrawer();
   });
 
-	// show/hide attendee details
-	quickClick($('ul#attendees li .drawer .button.details'), function(target) {
+	// show/hide guest details
+	quickClick($('ul#guests li .drawer .button.details'), function(target) {
 			target.siblings('.details_box').slideToggle('fast');
 	});
 
-	// check attendees in and out
-	quickClick($('ul#attendees li .drawer .button.checkin'), function(target) {
+	// check guests in and out
+	quickClick($('ul#guests li .drawer .button.checkin'), function(target) {
 		if (target.hasClass('checked_in')) {
 			$.post('/checkout', {'id':target.parents('li').attr('id')}, function() {
 				target.removeClass('checked_in');

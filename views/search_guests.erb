@@ -1,6 +1,6 @@
 <% unless @query == '' %>
-  <% if @people.count > 0 %>
-		<%= partial :people_list, :collection => @people %>
+  <% if @guests.count > 0 %>
+		<%= partial :guests_list, :collection => @guests %>
   <% else %>
   <p class="nodice">No results matched your query.</p>
   <% end %>

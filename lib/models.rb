@@ -4,7 +4,7 @@ require 'datamapper'
 # DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
-class Attendee
+class Guest
   include DataMapper::Resource
   
   property :id,   Serial

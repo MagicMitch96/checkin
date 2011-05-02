@@ -1,7 +1,7 @@
 <h2>Reports</h2>
 <p id="stats">
-	<strong><%= @checked_in.count %></strong> of <strong><%= @people.count %></strong> people have checked in.<br />
-	That's about <strong><%= ((@checked_in.count.to_f / @people.count.to_f) * 100).round %>%</strong>.
+	<strong><%= @checked_in.count %></strong> of <strong><%= @guests.count %></strong> guests have checked in.<br />
+	That's about <strong><%= ((@checked_in.count.to_f / @guests.count.to_f) * 100).round %>%</strong>.
 </p>
 
 <h2>Schedule</h2>

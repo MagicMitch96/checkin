@@ -1,0 +1,23 @@
+<ul class="wide_list" id="guests">
+  <% @guests.each do |guest| %>
+	<li id="<%= guest.id %>"<%= ' class="checked_in"' if guest.checked_in? %>>
+		<div class="content"><%= guest.last_name + ", " + guest.first_name %><!-- <span class="badge">S</span> --></div>
+		<div class="drawer">
+			<span class="button first details">Details</span>
+			<% if guest.checked_in? %>
+			<span class="button checkin checked_in">Checked In</span>
+			<% else %>
+			<span class="button checkin">Check In</span>			
+			<% end %>
+			<div class="details_box">
+				<p>
+					<% if guest.group && guest.group != '' %>
+					<strong><%= guest.group %></strong><br>
+					<% end %>
+					<%= guest.email %>
+				</p>			
+		</div>
+		</div>
+	</li>
+  <% end %>
+</ul>
