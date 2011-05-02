@@ -2,6 +2,8 @@ require 'rubygems'
 require 'sinatra'
 require 'lib/models'
 
+enable :sessions
+
 use Rack::Auth::Basic do |username, password|
   [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
 end
@@ -20,6 +22,12 @@ before do
   # everything except the import page is only accessible from mobile browsers
   unless request.user_agent.downcase.include? 'mobile'
     redirect '/import' unless (request.path == '/import' || request.path == '/process')
+  end
+  
+  # flash messages
+  if session[:flash]
+    @flash = session[:flash]
+    session[:flash] = nil
   end
 end
 
@@ -90,7 +98,7 @@ end
 # accessbile from desktop browser for setup
 
 get '/import' do
-  erb :import, :layout => false
+  erb :import, :layout => :desktop
 end
 
 post '/process' do
@@ -110,5 +118,6 @@ post '/process' do
       GC.start if n%50 == 0
     end
   end
-  "CSV import successful.  #{n} new records were added to the database."
+  session[:flash] = { :type => 'notice', :message => "CSV import successful.  #{n} new records were added to the database." }
+  redirect '/import'
 end

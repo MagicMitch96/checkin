@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+		
+	<title>Check In - Import</title>
+	
+  <style type="text/css">
+    body { font-family: sans-serif; color: #333; }
+    p.notice, p.error { font-weight: bold; }
+    p.notice { color: green; }
+    p.error { color: red; }
+  </style>
+</head>
+<body>
+  <% if @flash %>
+    <p class="<%= @flash[:type] %>"><%= @flash[:message] %><p>
+  <% end %>
+
+  <%= yield %>
+
+</body>
+</html>
