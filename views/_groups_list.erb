@@ -1,7 +1,7 @@
 <ul class="wide_list" id="groups">
   <% @groups.each do |group| %>
-  <li id="<%= group.group.gsub(' ', '-') %>">
-    <div class="content"><%= group.group %><span class="arrow">&gt;</span></div>
+  <li id="<%= group.gsub(' ', '-') %>">
+    <div class="content"><%= group %><span class="arrow">&gt;</span></div>
   </li>
   <% end %>
 </ul>

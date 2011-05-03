@@ -70,14 +70,14 @@ get '/groups' do
 end
 
 get '/groups/alpha/:letter' do
-  @scope = params[:letter].upcase  
-  @groups = Guest.all(:fields => [:group], :unique => true, :conditions => ["\"group\" ILIKE ?", "#{@scope}%"], :order => [:group.asc])
+  @scope = params[:letter].upcase
+  @groups = repository(:default).adapter.select('SELECT DISTINCT "group" FROM guests WHERE "group" ILIKE ?', "#{@scope}%")
   erb :scoped_groups, :layout => !request.xhr?
 end
 
 get '/groups/search' do
   @query = params[:query]
-  @groups = Guest.all(:fields => [:group], :unique => true, :conditions => ["\"group\" ILIKE ?", "%#{@query}%"], :order => [:group.asc]) unless @query == ''
+  @groups = repository(:default).adapter.select('SELECT DISTINCT "group" FROM guests WHERE "group" ILIKE ?', "%#{@query}%") unless @query == ""
   erb :search_groups, :layout => !request.xhr?
 end
 
