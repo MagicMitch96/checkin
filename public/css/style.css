@@ -352,6 +352,9 @@ ul.wide_list {
     );
   }
   
+  ul.wide_list#groups li .content { background: #f6f6f6; }
+  ul.wide_list#groups li .content.pressed { background: #fbfbfb; }
+  
   ul.wide_list li .badge {
     display: inline-block;
     position: absolute;
