@@ -12,7 +12,7 @@
 			<div class="details_box">
 				<p>
 					<% if guest.group && guest.group != '' %>
-					<strong><%= guest.group %></strong><br>
+					<span class="guest_group" id="<%= guest.group.gsub(' ', '-') %>"><%= guest.group %></span><br>
 					<% end %>
 					<%= guest.email %>
 				</p>			

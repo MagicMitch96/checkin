@@ -467,6 +467,10 @@ ul.wide_list {
         padding: 14px 0;
       }
       
+        ul.wide_list li .drawer .details_box p .guest_group { font-weight: bold; }
+        
+        ul.wide_list li .drawer .details_box p .guest_group.pressed { color: #000; }
+      
 /*-- MORE --*/
 
 h2 {

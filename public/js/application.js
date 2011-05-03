@@ -80,6 +80,17 @@ $(document).ready(function() {
 			});			
 		}
 	});
+	
+	// group name in guest details links to group list
+	$('ul#guests li .drawer .details_box .guest_group').quickClick(function(target) {
+		loading = delayedLoadingScreen();
+		$.get('/groups/' + target.attr('id'), null, function(data) {
+			clearTimeout(loading);
+			$('nav ul li').removeClass('active');
+	    $('nav ul li#groups').addClass('active');
+			$('#main').html(data);
+		});
+	})
   
   // go to list of group attendess when clicking on a group name
   $('ul#groups li .content').quickClick(function(target) {
