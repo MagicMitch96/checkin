@@ -103,17 +103,18 @@ end
 
 post '/process' do
   parsed_file = CSV.parse(params[:file][:tempfile])
+  parsed_file.shift
   n = 0
   parsed_file.each do |row| 
-    a = Guest.new
-    a.attributes = {
+    g = Guest.new
+    g.attributes = {
       :first_name => row[0],
       :last_name => row[1],
       :email => row[2],
       :group => row[3],
       :type => row[4]
     }
-    if a.save
+    if g.save
       n += 1
       GC.start if n%50 == 0
     end
