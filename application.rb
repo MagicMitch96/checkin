@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'lib/models'
+require './lib/models'
 
 enable :sessions
 

@@ -3,6 +3,7 @@ Check In
 
 Check In is a small [Sinatra](http://www.sinatrarb.com/) app that was developed for [Echo Conference](http://www.echoconference.com). It's a simple mobile web app that can be used to check in people at an event.  With the ability to be used by multiple people at once and by anyone with an iOS or Android device, it's a great replacement for paper lists and highlighters.
 
+
 Development
 -----------
 
@@ -13,6 +14,7 @@ I'd also welcome any ideas for improvement.  Feel free to fork this repository a
 If you're going to be doing local development, you will need to make sure that you set a few environment variables when you start the app.  Depending on what you're using to run the app (i.e. a plain ruby process, the [shotgun](https://github.com/rtomayko/shotgun) gem, etc.), you can start the app like this:
 
     ADMIN_USERNAME=admin ADMIN_PASSWORD=password DATABASE_URL=postgres://db_username:db_password@localhost/db_name ruby application.rb
+
 
 Usage
 -----
@@ -27,7 +29,7 @@ Open up your favorite command line interface, and in the directory of your choic
 
     git clone git@github.com:molawson/checkin.git
     cd checkin
-    heroku create --stack bamboo-ree-1.8.7
+    heroku create
     git push heroku master
 
 You need to add 2 config variables to your app on Heroku for authentication.
@@ -46,11 +48,10 @@ If, at any point, you need to reset your database, Heroku makes that pretty simp
 
     heroku db:reset DATABASE
 
+
 Notes
 -----
 
 Because the app uses touch events rather than clicks for interaction, you'll only be able to access the full app from a mobile browser.
-
-The app currently will not work with Ruby 1.9.2, so please make sure you're running on 1.8.7 (if you've followed the instructions for Heroku above, you're all set there).  If you need to install multiple rubies on your development machine, I've found [RVM](https://rvm.beginrescueend.com/) to be pretty awesome. That being said, I am planning on adding 1.9.2 support soon.
 
 If you have any questions, feel free to message me on Github.
