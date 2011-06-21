@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'cgi'
 require './lib/models'
 
 enable :sessions
@@ -15,6 +16,14 @@ helpers do
     options = args.last.is_a?(Hash) ? args.pop : {}
     options.merge!(:layout => false)    
     erb(:"#{template}", options)
+  end
+  
+  def escape_special(string)
+    CGI.escape(string)
+  end
+  
+  def unescape_special(string)
+    CGI.unescape(string)
   end
 end
 
@@ -82,7 +91,7 @@ get '/groups/search' do
 end
 
 get '/groups/:group' do
-  @scope = params[:group].gsub('-', ' ')
+  @scope = unescape_special(params[:group])
   @guests = Guest.all(:group => @scope, :order => [:last_name.asc])
   erb :scoped_guests, :layout => !request.xhr?
 end

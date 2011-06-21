@@ -1,6 +1,6 @@
 <ul class="wide_list" id="groups">
   <% @groups.each do |group| %>
-  <li id="<%= group.gsub(' ', '-') %>">
+  <li id="<%= escape_special(group) %>">
     <div class="content"><%= group %><span class="arrow">&gt;</span></div>
   </li>
   <% end %>
