@@ -1,0 +1,9 @@
+speaker:
+  class: speaker
+  abbr: SE
+sponsor:
+  class: sponsor
+  abbr: SO
+volunteer:
+  class: vol
+  abbr: V

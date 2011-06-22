@@ -418,9 +418,10 @@ ul.wide_list {
     line-height: 31px;
     text-align: center;
     color: #fff;
-    background: #70ce60;
+    background: #444;
     -webkit-box-shadow: inset 0 0 2px rgba(1,1,1,0.4);
     font-weight: bold;
+    font-style: normal;
     font-size: 12px;
     border-radius: 16px;
   }

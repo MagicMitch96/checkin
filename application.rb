@@ -1,13 +1,18 @@
 require 'rubygems'
 require 'sinatra'
 require 'cgi'
+require 'yaml'
 require './lib/models'
+
+
 
 enable :sessions
 
 use Rack::Auth::Basic do |username, password|
   [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
 end
+
+
 
 helpers do
   def partial(template, *args)
@@ -25,7 +30,17 @@ helpers do
   def unescape_special(string)
     CGI.unescape(string)
   end
+  
+  def guest_type_element(guest_type, element)
+    if @guest_types[guest_type] && @guest_types[guest_type][element]
+      @guest_types[guest_type][element]
+    else
+      default_guest_type_element(guest_type, element)
+    end
+  end
 end
+
+
 
 before do
   # everything except the import page is only accessible from mobile browsers
@@ -38,7 +53,10 @@ before do
     @flash = session[:flash]
     session[:flash] = nil
   end
+  
+  load_guest_types
 end
+
 
 
 get '/' do
@@ -130,4 +148,21 @@ post '/process' do
   end
   session[:flash] = { :type => 'notice', :message => "CSV import successful.  #{n} new records were added to the database." }
   redirect '/import'
+end
+
+
+
+private #-----------------
+
+def load_guest_types
+  @guest_types ||= YAML.load(File.read("./config/guest_types.yml"))
+end
+
+def default_guest_type_element(guest_type, element)
+  case element
+  when "abbr"
+    guest_type[0..1].upcase
+  else
+    guest_type.gsub(/(?![A-Za-z_])./, '')
+  end
 end
