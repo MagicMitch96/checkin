@@ -29,8 +29,9 @@ $.fn.extend({
   } // end loadingScreen
 });
 
-function delayedLoadingScreen() {
-  return setTimeout("$('#main').loadingScreen()", 200);
+function delayedLoadingScreen(target) {
+  target = target || "#main";
+  return setTimeout("$('" + target + "').loadingScreen()", 200);
 }
 
 $(document).ready(function() {
@@ -153,6 +154,7 @@ $(document).ready(function() {
 
   // live search (includes showing and hiding the reset search button)
 	$('#search input#search_field').live('keyup', function() {
+    loading = delayedLoadingScreen("#search_results");
 	  query = $(this).val();
 	  active = $('nav ul li.active').attr('id');
 		if (query != '') {
@@ -161,6 +163,7 @@ $(document).ready(function() {
 			$(this).siblings('.reset').hide();
 		}
 		$.get('/' + active + '/search?query=' + query, null, function (data) {
+		  clearTimeout(loading);
       $("#search_results").html(data);
     });
 	});

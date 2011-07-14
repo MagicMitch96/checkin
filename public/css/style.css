@@ -146,6 +146,8 @@ div.loading {
   margin: 0 auto;
 }
 
+  #search_results .loading { top: 30px; }
+
 @-webkit-keyframes fade {
   from {opacity: 1;}
   to {opacity: 0.3;}
@@ -267,12 +269,15 @@ div.spinner div.bar12 {
     right: -40px;
   }
 
-#search_results .nodice {
-  font-weight: bold;
-  font-style: italic;
-  line-height: 56px;
-  padding-left: 10px;
-}
+#search_results { position: relative; }
+
+  #search_results .nodice {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 56px;
+    padding-left: 10px;
+  }
 
 
 /*-- ALPHABET TABLE --*/
