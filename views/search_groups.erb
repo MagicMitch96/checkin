@@ -1,5 +1,5 @@
 <% unless @query == '' %>
-  <% if @groups.count > 0 %>
+  <% if @groups.length > 0 %>
 		<%= partial :groups_list, :collection => @groups %>
   <% else %>
   <p class="nodice">No results matched your query.</p>

@@ -3,7 +3,7 @@
 	<li id="<%= guest.id %>"<%= ' class="checked_in"' if guest.checked_in? %>>
 		<div class="content"><%= guest.last_name + ", " + guest.first_name %>
     <% guest.type.tap do |type| %>
-    	<% if type != '' %>
+    	<% if type != '' && !type.nil? %>
       <span class="badge <%= guest_type_element(type, 'class') %>"><%= guest_type_element(type, 'abbr') %></span>
       <% end %>
     <% end %>
