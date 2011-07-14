@@ -550,10 +550,32 @@ h2 {
 }
 
 #stats {
-  font-size: 15px;
-  padding: 12px;
+  font-size: 14px;
+  margin: 4px;
   line-height: 21px;
 }
+
+  #stats th,
+  #stats td {
+    padding: 3px 6px;
+    text-align: center;
+  }
+  
+  #stats th:first-child,
+  #stats td:first-child { text-align: left; font-weight: bold; }
+  
+  #stats th:last-child,
+  #stats td:last-child { text-align: right; }
+  
+  #stats tr:last-child td { font-weight: bold; }
+  
+  #stats th {
+    font-size: 13px;
+    color: #999;
+  }
+  
+  #stats td.guest_type { color: #3b90c4; }
+  #stats td.guest_type.pressed { color: #111; }
 
 /*- SCHEDULE -*/
 

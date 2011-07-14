@@ -12,7 +12,7 @@ class Guest
   property :last_name, String
   property :email, String
   property :group, String, :index => true
-  property :type, String
+  property :type, String, :index => true
   property :checked_in, Boolean, :default => false
 end
 

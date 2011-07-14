@@ -101,6 +101,15 @@ $(document).ready(function() {
     });
   });
   
+  // go to a list of guests of a certain type when selected form the "more" tab
+  $('table#stats tr td.guest_type').quickClick(function(target) {
+    loading = delayedLoadingScreen();
+    $.get('/individuals/type/' + target.parent('tr').attr('id'), null, function(data) {
+      clearTimeout(loading);
+      $('#main').html(data);
+    });
+  });
+  
   // go to list of attendess or groups with the selected letter
   $('table.alpha td').quickClick(function(target) {
     loading = delayedLoadingScreen();

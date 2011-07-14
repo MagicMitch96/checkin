@@ -74,6 +74,13 @@ get '/individuals/alpha/:letter' do
   erb :scoped_guests, :layout => !request.xhr?
 end
 
+get '/individuals/type/:type' do
+  @scope = unescape_special(params[:type])
+  @guests = Guest.all(:conditions => ["type = ?", "#{@scope}"], :order => [:last_name.asc])
+  @scope.capitalize!
+  erb :scoped_guests, :layout => !request.xhr?
+end
+
 get '/individuals/search' do
   @query = params[:query]
   @guests = Guest.all(:conditions => ["last_name ILIKE ? OR first_name ILIKE ?", "%#{@query}%", "%#{@query}%"], :order => [:last_name.asc]) unless @query == ''
@@ -116,8 +123,8 @@ end
 
 
 get '/more' do
-  @guests = Guest.all(:fields => [:id, :checked_in])
-  @checked_in = @guests.all(:checked_in => true)
+  @guests = Guest.all(:fields => [:id, :checked_in, :type])
+  @types = repository(:default).adapter.select('SELECT DISTINCT "type" FROM guests WHERE "type" <> ? ORDER BY "type" ASC', "")
   erb :more, :layout => !request.xhr?
 end
 

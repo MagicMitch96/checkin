@@ -1,9 +1,12 @@
-speaker:
-  class: speaker
-  abbr: SE
 sponsor:
   class: sponsor
-  abbr: SO
+  abbr: S
+keynote:
+  class: keynote
+  abbr: K
+breakout:
+  class: breakout
+  abbr: B
 volunteer:
-  class: vol
+  class: volunteer
   abbr: V

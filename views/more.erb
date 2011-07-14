@@ -1,8 +1,32 @@
-<h2>Reports</h2>
-<p id="stats">
-	<strong><%= @checked_in.count %></strong> of <strong><%= @guests.count %></strong> guests have checked in.<br />
-	That's about <strong><%= ((@checked_in.count.to_f / @guests.count.to_f) * 100).round %>%</strong>.
-</p>
+<h2>Stats</h2>
+<table id="stats" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th>Guest Type</th>
+    <th>Checked In</th>
+    <th>Registered</th>
+    <th>%</th>
+  </tr>
+  <% @types.each do |type| %>
+  <tr id="<%= escape_special(type) %>">
+    <td class="guest_type"><%= type.capitalize %></td>
+    <% @guests.select{ |g| g.type == type }.tap do |guests| %>
+    <% guests.select{ |g| g.checked_in }.tap do |checked_in| %>
+    <td><%= checked_in.length %></td>
+    <td><%= guests.length %></td>
+    <td><%= ((checked_in.length.to_f / guests.length.to_f) * 100).round %>%</td>
+    <% end %>
+    <% end %>
+  </tr>
+  <% end %>
+  <tr>
+    <td>ALL</td>
+    <% @guests.select{ |g| g.checked_in }.tap do |checked_in| %>
+    <td><%= checked_in.length %></td>
+    <td><%= @guests.length %></td>
+    <td><%= ((checked_in.length.to_f / @guests.length.to_f) * 100).round %>%</td>
+    <% end %>
+  </tr>
+</table>
 
 <h2>Schedule</h2>
 <div id="schedule_wrapper">
