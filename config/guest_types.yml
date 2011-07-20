@@ -1,6 +1,3 @@
-sponsor:
-  class: sponsor
-  abbr: S
 keynote:
   class: keynote
   abbr: K
@@ -10,3 +7,6 @@ breakout:
 volunteer:
   class: volunteer
   abbr: V
+comp:
+  class: comp
+  abbr: C

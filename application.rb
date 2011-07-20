@@ -45,7 +45,7 @@ end
 before do
   # everything except the import page is only accessible from mobile browsers
   unless request.user_agent.downcase.include? 'mobile'
-    redirect '/import' unless (request.path == '/import' || request.path == '/process')
+    redirect '/import' unless (request.path == '/import' || request.path == '/process' || request.path == '/reset_db')
   end
   
   # flash messages
@@ -136,27 +136,36 @@ get '/import' do
 end
 
 post '/process' do
-  parsed_file = CSV.parse(params[:file][:tempfile])
-  parsed_file.shift
-  n = 0
-  parsed_file.each do |row| 
-    g = Guest.new
-    g.attributes = {
-      :first_name => row[0],
-      :last_name => row[1],
-      :email => row[2],
-      :group => row[3],
-      :type => row[4]
-    }
-    if g.save
-      n += 1
-      GC.start if n%50 == 0
+  if params[:file]
+    parsed_file = CSV.parse(params[:file][:tempfile])
+    parsed_file.shift
+    n = 0
+    parsed_file.each do |row| 
+      g = Guest.new
+      g.attributes = {
+        :first_name => row[0],
+        :last_name => row[1],
+        :email => row[2],
+        :group => row[3],
+        :type => row[4]
+      }
+      if g.save
+        n += 1
+        GC.start if n%50 == 0
+      end
     end
+    session[:flash] = { :type => 'notice', :message => "CSV import successful.  #{n} new records were added to the database." }
+  else
+    session[:flash] = { :type => 'error', :message => "Please select a file to import." }
   end
-  session[:flash] = { :type => 'notice', :message => "CSV import successful.  #{n} new records were added to the database." }
   redirect '/import'
 end
 
+post '/reset_db' do
+  Guest.all.destroy
+  session[:flash] = { :type => 'notice', :message => "Successfully reset the database." }
+  redirect '/import'
+end
 
 
 private #-----------------

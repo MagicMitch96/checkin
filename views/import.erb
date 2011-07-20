@@ -11,8 +11,17 @@
 
 <p><strong>MAKE SURE</strong> that you include a header row in your CSV file.</p>
 
-<form action="/process" method="post" enctype="multipart/form-data">
+<form id="import" action="/process" method="post" enctype="multipart/form-data">
   <p><input type="file" name="file" id="file"></p>
-
   <p><input type="submit" value="Import"></p>
+</form>
+
+<hr />
+
+<h2>Reset the database</h2>
+<p>Clicking the button below will erase all records from the database.</p>
+<p><strong>MAKE SURE</strong> this is really what you want to do because it can't be undone.</p>
+
+<form id="reset" action="/reset_db" method="post">
+  <p><input type="submit" value="Reset Database"></p>
 </form>
