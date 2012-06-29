@@ -250,18 +250,4 @@ $(document).ready(function() {
     });
 	});
 	
-	// post-load layout images
-	var images = new Array()
-	function preload() {
-		for (i = 0; i < preload.arguments.length; i++) {
-			images[i] = new Image()
-			images[i].src = preload.arguments[i]
-		}
-	}
-	preload(
-		"/images/circleright32.png",
-		"/images/clear32.png",
-		"/images/search32.png"
-	)
-  
 });

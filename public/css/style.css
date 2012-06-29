@@ -251,7 +251,7 @@ div.spinner div.bar12 {
     height: 13px;
     line-height: 13px;
     font-size: 13px;
-    background: #f9f9f9 url('../images/search32.png') no-repeat 10px center;
+    background: #f9f9f9 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOC8xOC8wOaw6EPwAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzQGstOgAAAC+0lEQVRYhc3XXailUxjA8d+ec+bQMY3xlY+muBlChjSiSGqaixVTiiskkqYpN0LChZpygSgmqQkZX3cSqediMtKZUWoyuUCpuZhiGBwfh8GZafZ2sdY777tP+5yz9+scPLVrtfZa6/mvZz1fb6fX6/kvZXyhP1NKZ+EGbMSFGMPXmMKuiDjwTwE6gyxQFD+O27AaKwbsncXHeDQiPlkygJTSRryKc+dRPFd+x3PYFhHHRgXoe4KU0ibswHlFea/8fsOPOI7TsUZ+jg5W4QH8hSdGBThhgZTS2diNi8rhPUzjEbwVEX80QK/Gk7huzto7IyLaAjyN+xs334e7IuLL+TanlF7GHZgoew5gfUT8OSzAinLQOLao3/ww7l5IeZEHsaso7+ACpGGVnwDATTiljHvYHhFfLLY5In7Gwzha9o3hnjYASb4BObyeGfaAiPgczTC8og3A9QWgg5mIODrKIdjTGK9pAzDRmJsdUTl81xiPtQFoeu1kC4BzGuPjbQB2q5POZEpp1bAHlAja1JiabgPwPrplfLJcB4aVa7C+jHv4sA3AHjnVVnNbU0qLenNK6TQ5/VY+NItXRgYoafYptRUmsTOltGEB5WvxmpyOqxA+GBEfjQLQTMUT2C/X/XHZnDN4Cc9GxKGybhK34CFcot/rZ/AYXoyIoZyxrxwXs+/EpfpL8TH8KltoNU5S5425DcURbI2IN0YGKBAb8DrWWbwf6OJbfI/L1ZXxkFxF34yI7vzbByiIiH24CtvwjcFx3cNPeBubZT/YK1uqI/cTL+DmRS4wuCWrJKW0EpfJcX4lVsol9wNMRcSRxtq1eL4AVT50GFsi4r1WAKNKgXhX/RxdOU3fFxHvLDtAgThDfppr1Zb4AbdGxNTc9cM0nSNJREzjXrmj6so+cSZ2DMorS26BSlJK58sp/mJ1dPyCzRGxt1q35BaoJCIOyv3ifrUlTsX25rplAygQn+F22REriHX/GkCB+Ao34lP5I6av4Vk2HxhWlt0C/3uAvwEr0Qq3PZNxiAAAAABJRU5ErkJggg==) no-repeat 10px center;
     -webkit-background-size: 16px 16px;
     border: 1px solid #3b90c4;
     border-radius: 14px;
@@ -262,7 +262,7 @@ div.spinner div.bar12 {
     display: none;
     height: 26px;
     width: 26px;
-    background: url('../images/clear32.png') no-repeat center center;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOC8xOS8wORSGd5kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzQGstOgAAABvElEQVRIic2XwXWCQBCGP23AEmIHwQrCkTlJOrAUStEKoqe5YgWJHcQSqMAcGCLowO4m5r3873Fhh/mY3ZlhmF0uF0ISkRLI7Xp2TE5ADdSqug/5m01BRWQDVMBT8M2uOgOVqm6ToCKyBLbASwLsVkdgo6qfQaiIZLRbtfgFsFMD5Kr6MQo14PsDYLda9cHzHnBJG+FfqDb/QyjtGXpbeqDdphg1Zn+rhfm/Qi1LvaTZqWpXLiFwd34lsHPWX4zzHWnlGB1UdQNg5zEFHiSMPedFXAHMiqIogbeQIxjN7Fi7Tq9zi8DTgjYBsu6GE3EqECCfgobA5x8AAfJZURTh5jtS5H2lNJV5yMB0F/FPgSnQDjz2BdnHAlOhDVCOrJXEN5Bo6OSZRtTxHfSUChSRTEQ+A+U0ptOc6SY/VYdPhOvYUz0FjSn8mAZyD7WZ5uwtRhb+GNgL5qyq+6mGvxaRbQDogu25tWNXQW9yEJEa//N2oN2umDps7OU84FFVcxiWzAb/HNaRQMzOAzbmnwHUprY80nmq8v5UOGgOlgArErpLQA03Q9kdtAfOaOfW3+gIZF4X+z8TvgN/6L/MF/xGCeyc7nXSAAAAAElFTkSuQmCC) no-repeat center center;
     -webkit-background-size: 16px 16px;
     text-indent: -9999px;
     position: absolute;
@@ -437,7 +437,7 @@ ul.wide_list {
     float: right;
     line-height: 56px;
     width: 32px;
-    background: url('../images/circleright32.png') no-repeat center center;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK8AAACvABQqw0mAAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOC8xOC8wOaw6EPwAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzQGstOgAAACSklEQVRYhcWXTXLTQBBGnyjWwTkBuQHcILDsRbCoHAAX7IETgAMHIFWsSfjZJwIWvaQoDsAVqGIfW+YAw2JmVK2xbEaWTXolqWb6e+rp6Z4pnHNcp924VnXgZs4gEQEYAQ+BEjgEbiXDauAbUAGfVXWe47szAkEwPo+A98AV8A540CFO+FYC58CViJyJyF7qL7UizQERQVXjcxnEuwRzbAZMVPWL9WutFYFEfApcDhAH2AcqEXmhqp2RaCIQxcOgKfBygHBqDpiq6qs0Eq0lCOIl/s+3bQ4o0+VoRQCf6b8YFvZ1NgMOVHURP9gcKIDTHYqDz4lT+8ECjIBHGU4c8Bj4sSHERESan7QA41wPqnqOL0ZPgD8bQDRaFqDs40FVHXAGHABfe0wtrJYFuN8HIECAr5Bj4Bj4nTm10bIAe33EY1FR1RiNC+AO8DZjemcO9DJTMe37DHiKT9Is22o7DhDPgTf/GhuaXF47XuPERuIufo8fZk6fQzsCixUDV1rSuH72EK/jXBuB78BRHwARuYdv17f7zAtaSwBVLoCIjPFb6VlPYfCVtIovdglyO2CB/+tNxJe0LMAc+JTpYDRA/KOq1l0ADr+FNqntuVYHjcYaAFNWJzsEmKSn5VYhChCXwOsdiJ+oagXtU3IDYEqqw58HtwlxoqrTqGPPhK0l6IA4ZlhO1PjLTKd4C2AFxAW+3+fuDmsfwtwq+u26FyxdTFLSAFSwfDVL2/cCczXDb2u3TnwlQAphQCJMtFgPbGY7aLfrVeJrAf6X/QVS2PJkoltMiwAAAABJRU5ErkJggg==) no-repeat center center;
     -webkit-background-size: 16px 16px;
     text-indent: -9999px;
     margin-right: 10px;
