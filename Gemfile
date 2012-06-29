@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'datamapper'
-gem 'dm-postgres-adapter'
+gem 'mongoid', '~> 3.0.0.rc'

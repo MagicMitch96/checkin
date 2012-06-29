@@ -2,8 +2,8 @@ require 'rubygems'
 require 'sinatra'
 require 'cgi'
 require 'yaml'
+require 'csv'
 require './lib/models'
-
 
 
 enable :sessions
@@ -70,32 +70,33 @@ end
 
 get '/individuals/alpha/:letter' do
   @scope = params[:letter].upcase
-  @guests = Guest.all(:conditions => ["last_name ILIKE ?", "#{@scope}%"], :order => [:last_name.asc])
+  @guests = Guest.where(:last_name => /^#{@scope}/i).order_by(:last_name_lower.asc)
   erb :scoped_guests, :layout => !request.xhr?
 end
 
 get '/individuals/type/:type' do
-  @scope = unescape_special(params[:type])
-  @guests = Guest.all(:conditions => ["type = ?", "#{@scope}"], :order => [:last_name.asc])
-  @scope.capitalize!
+  type = unescape_special(params[:type])
+  @scope = type.capitalize
+  @guests = Guest.where(:type => type).order_by(:last_name_lower.asc)
   erb :scoped_guests, :layout => !request.xhr?
 end
 
 get '/individuals/search' do
   @query = params[:query]
-  @guests = Guest.all(:conditions => ["last_name ILIKE ? OR first_name ILIKE ?", "%#{@query}%", "%#{@query}%"], :order => [:last_name.asc]) unless @query == ''
+  @guests = Guest.or( { :first_name => /#{@query}/i }, { :last_name => /#{@query}/i } ).order_by(:last_name_lower.asc) unless @query == ''
   erb :search_guests, :layout => !request.xhr?
 end
 
 
 post '/checkin' do
-  @guest = Guest.get(params[:id])
-  @guest.update(:checked_in => true)
+  puts "ID - #{params[:id]}"
+  @guest = Guest.find(params[:id])
+  @guest.update_attribute(:checked_in, true)
 end
 
 post '/checkout' do
-  @guest = Guest.get(params[:id])
-  @guest.update(:checked_in => false)
+  @guest = Guest.find(params[:id])
+  @guest.update_attribute(:checked_in, false)
 end
 
 
@@ -105,26 +106,26 @@ end
 
 get '/groups/alpha/:letter' do
   @scope = params[:letter].upcase
-  @groups = repository(:default).adapter.select('SELECT DISTINCT "group" FROM guests WHERE "group" ILIKE ? ORDER BY "group" ASC', "#{@scope}%")
+  @groups = Guest.where(:group => /^#{@scope}/i).distinct('group').sort { |a,b| a.upcase <=> b.upcase }
   erb :scoped_groups, :layout => !request.xhr?
 end
 
 get '/groups/search' do
   @query = params[:query]
-  @groups = repository(:default).adapter.select('SELECT DISTINCT "group" FROM guests WHERE "group" ILIKE ? ORDER BY "group" ASC', "%#{@query}%") unless @query == ""
+  @groups = Guest.where(:group => /#{@query}/i).distinct('group').sort { |a,b| a.upcase <=> b.upcase } unless @query == ""
   erb :search_groups, :layout => !request.xhr?
 end
 
 get '/groups/:group' do
   @scope = unescape_special(params[:group])
-  @guests = Guest.all(:group => @scope, :order => [:last_name.asc])
+  @guests = Guest.where(:group => @scope).order_by(:last_name_lower.asc)
   erb :scoped_guests, :layout => !request.xhr?
 end
 
 
 get '/more' do
-  @guests = Guest.all(:fields => [:id, :checked_in, :type])
-  @types = repository(:default).adapter.select('SELECT DISTINCT "type" FROM guests WHERE "type" <> ? ORDER BY "type" ASC', "")
+  @guests = Guest.all
+  @types = Guest.nin(:type => [nil, '']).distinct('type').sort { |a,b| a.upcase <=> b.upcase }
   erb :more, :layout => !request.xhr?
 end
 
@@ -145,6 +146,7 @@ post '/process' do
       g.attributes = {
         :first_name => row[0],
         :last_name => row[1],
+        :last_name_lower => row[1].downcase,
         :email => row[2],
         :group => row[3],
         :type => row[4]

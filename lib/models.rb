@@ -1,19 +1,17 @@
 require 'rubygems'
-require 'datamapper'
+require 'mongoid'
 
-# DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, ENV['DATABASE_URL'])
+
+Mongoid.load!(File.expand_path('..', File.dirname(__FILE__)) + "/config/mongoid.yml")
 
 class Guest
-  include DataMapper::Resource
+  include Mongoid::Document
   
-  property :id,   Serial
-  property :first_name, String
-  property :last_name, String
-  property :email, String
-  property :group, String, :index => true
-  property :type, String, :index => true
-  property :checked_in, Boolean, :default => false
+  field :first_name, :type => String
+  field :last_name, :type => String
+  field :last_name_lower, :type => String # recommended hack for case insensitive sorting
+  field :email, :type => String
+  field :group, :type => String
+  field :type, :type => String
+  field :checked_in, :type => Boolean, :default => false
 end
-
-DataMapper.auto_upgrade!
