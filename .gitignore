@@ -2,3 +2,4 @@
 .bundle
 tmp/*
 config/mongoid.yml
+config/admin_login.yml

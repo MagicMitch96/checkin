@@ -3,15 +3,20 @@ require 'sinatra'
 require 'cgi'
 require 'yaml'
 require 'csv'
-require './lib/models'
+
+require './models/init'
 
 
 enable :sessions
 
 use Rack::Auth::Basic do |username, password|
-  [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
+  if ENV['ADMIN_USERNAME'] && ENV['ADMIN_PASSWORD']
+    [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
+  else
+    yaml = YAML.load(File.read(File.expand_path(File.dirname(__FILE__)) + "/config/admin_login.yml"))
+    [username, password] == [yaml['USERNAME'], yaml['PASSWORD']]
+  end
 end
-
 
 
 helpers do
@@ -41,7 +46,6 @@ helpers do
 end
 
 
-
 before do
   # everything except the import page is only accessible from mobile browsers
   unless request.user_agent.downcase.include? 'mobile'
@@ -58,11 +62,9 @@ before do
 end
 
 
-
 get '/' do
   redirect '/individuals'
 end
-
 
 get '/individuals' do
   erb :alpha, :layout => !request.xhr?
@@ -87,7 +89,6 @@ get '/individuals/search' do
   erb :search_guests, :layout => !request.xhr?
 end
 
-
 post '/checkin' do
   puts "ID - #{params[:id]}"
   @guest = Guest.find(params[:id])
@@ -98,7 +99,6 @@ post '/checkout' do
   @guest = Guest.find(params[:id])
   @guest.update_attribute(:checked_in, false)
 end
-
 
 get '/groups' do
   erb :alpha, :layout => !request.xhr?
@@ -122,16 +122,13 @@ get '/groups/:group' do
   erb :scoped_guests, :layout => !request.xhr?
 end
 
-
 get '/more' do
   @guests = Guest.all
   @types = Guest.nin(:type => [nil, '']).distinct('type').sort { |a,b| a.upcase <=> b.upcase }
   erb :more, :layout => !request.xhr?
 end
 
-
 # accessbile from desktop browser for setup
-
 get '/import' do
   erb :import, :layout => :desktop
 end
@@ -168,7 +165,6 @@ post '/reset_db' do
   session[:flash] = { :type => 'notice', :message => "Successfully reset the database." }
   redirect '/import'
 end
-
 
 private #-----------------
 

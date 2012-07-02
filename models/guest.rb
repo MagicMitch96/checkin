@@ -1,9 +1,3 @@
-require 'rubygems'
-require 'mongoid'
-
-
-Mongoid.load!(File.expand_path('..', File.dirname(__FILE__)) + "/config/mongoid.yml")
-
 class Guest
   include Mongoid::Document
   
@@ -14,4 +8,7 @@ class Guest
   field :group, :type => String
   field :type, :type => String
   field :checked_in, :type => Boolean, :default => false
+
+  index({:group => 1})
+  index({:first_name => 1, :last_name => 1})
 end
