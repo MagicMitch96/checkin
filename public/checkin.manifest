@@ -1,0 +1,17 @@
+CACHE MANIFEST
+#20120703094646
+
+individuals
+groups
+
+css/style.min.css
+js/application.min.js
+
+images/maps/map-1.png
+images/maps/map-2.png
+images/maps/map-3.png
+images/maps/map-4.png
+images/maps/map-5.png
+
+NETWORK:
+*
