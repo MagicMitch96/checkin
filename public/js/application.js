@@ -1490,14 +1490,17 @@ $(document).ready(function() {
   $('ul#guests li .content').quickClick(function(target) {
     var detailsBox = target.siblings('.drawer').children('.details_box');
     if( detailsBox.css('display') != 'none' ) {
-      detailsBox.slideUp(100);
+      // detailsBox.slideUp(100);
+      detailsBox.hide();
     }
-    target.siblings('.drawer').slideToggle(200);
+    // target.siblings('.drawer').slideToggle(200);
+    target.siblings('.drawer').toggle();
   });
 
 	// show/hide guest details
 	$('ul#guests li .drawer .button.details').quickClick(function(target) {
-			target.siblings('.details_box').slideToggle(100);
+			// target.siblings('.details_box').slideToggle(100);
+			target.siblings('.details_box').toggle();
 	});
 
 	// check guests in and out
