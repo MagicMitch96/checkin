@@ -1,11 +1,16 @@
 CACHE MANIFEST
-#20120703094646
-
-individuals
-groups
+#20120716102020
 
 css/style.min.css
 js/application.min.js
+
+apple/apple-touch-icon-precomposed.png
+apple/startup.png
+apple/startup-retina.png
+apple/startup-ipad.png
+apple/startup-ipad-landscape.png
+apple/startup-ipad-retina.png
+apple/startup-ipad-landscape-retina.png
 
 images/maps/map-1.png
 images/maps/map-2.png

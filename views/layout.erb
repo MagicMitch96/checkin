@@ -2,11 +2,18 @@
 <html lang="en-US" manifest="checkin.manifest">
 <head>
 	<meta charset="UTF-8">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link rel="apple-touch-startup-image" href="/startup.png">
-	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+
+  <link rel="apple-touch-startup-image" href="/apple/startup.png" media="screen and (max-device-width: 320px)" />
+  <link rel="apple-touch-startup-image" href="/apple/startup-retina.png" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="/apple/startup-ipad.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"/>
+  <link rel="apple-touch-startup-image" href="/apple/startup-ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
+  <link rel="apple-touch-startup-image" href="/apple/startup-ipad-retina.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)"/>
+  <link rel="apple-touch-startup-image" href="/apple/startup-ipad-landscape-retina.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" />
+	<link rel="apple-touch-icon-precomposed" href="/apple/apple-touch-icon-precomposed.png" />
 	
 	<title>Check In</title>
 	

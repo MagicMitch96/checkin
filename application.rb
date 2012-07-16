@@ -9,6 +9,10 @@ require './models/init'
 
 enable :sessions
 
+# serve apple specific images (i.e. those used in saving the app 
+# to a user's home screen) directly, bypassing authentication
+use Rack::Static, :urls => ["/apple"], :root => "public/images"
+
 use Rack::Auth::Basic do |username, password|
   if ENV['ADMIN_USERNAME'] && ENV['ADMIN_PASSWORD']
     [username, password] == [ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']]
@@ -63,7 +67,7 @@ end
 
 
 get '/' do
-  redirect '/individuals'
+  erb :alpha
 end
 
 get '/individuals' do
