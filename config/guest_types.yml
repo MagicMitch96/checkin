@@ -10,3 +10,6 @@ volunteer:
 comp:
   class: comp
   abbr: C
+exhibitor:
+  class: exhibitor
+  abbr: E
