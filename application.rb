@@ -11,7 +11,7 @@ enable :sessions
 
 # serve apple specific images (i.e. those used in saving the app 
 # to a user's home screen) directly, bypassing authentication
-use Rack::Static, :urls => ["/apple"], :root => "public/images"
+use Rack::Static, :urls => ["/apple"], :root => "public"
 
 use Rack::Auth::Basic do |username, password|
   if ENV['ADMIN_USERNAME'] && ENV['ADMIN_PASSWORD']
