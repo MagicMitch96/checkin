@@ -4,6 +4,5 @@ gem 'sinatra'
 gem 'mongoid', '~> 3.0.0.rc'
 
 gem 'capistrano'
-gem 'newrelic_rpm'
 
 gem 'unicorn'

@@ -4,4 +4,3 @@ tmp/*
 config/admin_login.yml
 config/deploy.rb
 config/mongoid.yml
-config/newrelic.yml
