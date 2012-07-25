@@ -31,6 +31,7 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    newrelic_rpm (3.4.0.1)
     origin (1.0.1)
     rack (1.4.1)
     rack-protection (1.2.0)
@@ -53,5 +54,6 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   mongoid (~> 3.0.0.rc)
+  newrelic_rpm
   sinatra
   unicorn
