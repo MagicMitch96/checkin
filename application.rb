@@ -6,7 +6,6 @@ require 'csv'
 
 require './models/init'
 
-
 enable :sessions
 
 # serve apple specific images (i.e. those used in saving the app 
@@ -31,15 +30,15 @@ helpers do
     options.merge!(:layout => false)    
     erb(:"#{template}", options)
   end
-  
+
   def escape_special(string)
     CGI.escape(string)
   end
-  
+
   def unescape_special(string)
     CGI.unescape(string)
   end
-  
+
   def guest_type_element(guest_type, element)
     if @guest_types[guest_type] && @guest_types[guest_type][element]
       @guest_types[guest_type][element]
@@ -55,13 +54,13 @@ before do
   unless request.user_agent.downcase.include? 'mobile'
     redirect '/import' unless (request.path == '/import' || request.path == '/process' || request.path == '/reset_db')
   end
-  
+
   # flash messages
   if session[:flash]
     @flash = session[:flash]
     session[:flash] = nil
   end
-  
+
   load_guest_types
 end
 
@@ -142,7 +141,7 @@ post '/process' do
     parsed_file = CSV.parse(params[:file][:tempfile])
     parsed_file.shift
     n = 0
-    parsed_file.each do |row| 
+    parsed_file.each do |row|
       g = Guest.new
       g.attributes = {
         :first_name => row[0],
@@ -170,7 +169,7 @@ post '/reset_db' do
   redirect '/import'
 end
 
-private #-----------------
+private
 
 def load_guest_types
   @guest_types ||= YAML.load(File.read("./config/guest_types.yml"))
