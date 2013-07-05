@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'sinatra'
-gem 'mongoid', '~> 3.0.0.rc'
+gem 'sinatra', '~> 1.3'
+gem 'mongoid', '~> 3.0'
 
 gem 'capistrano'
-
 gem 'unicorn'
