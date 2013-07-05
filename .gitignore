@@ -1,6 +1,7 @@
 .DS_Store
 .bundle
 tmp/*
+log/*
 config/admin_login.yml
 config/deploy.rb
 config/mongoid.yml
