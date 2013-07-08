@@ -8,7 +8,7 @@ set :deploy_via, :remote_cache
 
 set :user, "deploy"
 set :use_sudo, false
-set :deploy_to, "/var/apps/#{application}/"
+set :deploy_to, "/srv/apps/#{application}/"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
