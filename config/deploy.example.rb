@@ -10,6 +10,8 @@ set :user, "deploy"
 set :use_sudo, false
 set :deploy_to, "/srv/apps/#{application}/"
 
+set :normalize_asset_timestamps, false
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
