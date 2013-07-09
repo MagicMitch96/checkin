@@ -7,116 +7,117 @@
     <th>%</th>
   </tr>
   <% @types.each do |type| %>
-  <tr id="<%= escape_special(type) %>">
-    <td class="guest_type"><%= type.capitalize %></td>
-    <% @guests.select{ |g| g.type == type }.tap do |guests| %>
-    <% guests.select{ |g| g.checked_in }.tap do |checked_in| %>
-    <td><%= checked_in.length %></td>
-    <td><%= guests.length %></td>
-    <td><%= ((checked_in.length.to_f / guests.length.to_f) * 100).round %>%</td>
-    <% end %>
-    <% end %>
-  </tr>
+    <tr id="<%= escape_special(type) %>">
+      <td class="guest_type"><%= type.capitalize %></td>
+      <% @guests.select{ |g| g.type == type }.tap do |guests| %>
+        <% guests.select{ |g| g.checked_in }.tap do |checked_in| %>
+          <td><%= checked_in.length %></td>
+          <td><%= guests.length %></td>
+          <td><%= ((checked_in.length.to_f / guests.length.to_f) * 100).round %>%</td>
+        <% end %>
+      <% end %>
+    </tr>
   <% end %>
   <tr>
     <td>ALL</td>
     <% @guests.select{ |g| g.checked_in }.tap do |checked_in| %>
-    <td><%= checked_in.length %></td>
-    <td><%= @guests.length %></td>
-    <td><%= ((checked_in.length.to_f / @guests.length.to_f) * 100).round %>%</td>
+      <td><%= checked_in.length %></td>
+      <td><%= @guests.length %></td>
+      <td><%= ((checked_in.length.to_f / @guests.length.to_f) * 100).round %>%</td>
     <% end %>
   </tr>
 </table>
 
 <h2>Schedule</h2>
 <div id="schedule_wrapper">
-<h3><strong>Wednesday</strong>, July 25</h3> 
-<table class="schedule"> 
-	<tr>
-		<td class="schedule_time">1:00pm</td>
-		<td class="schedule_event minor">Registration Opens</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">3:00 - 3:50pm</td>
-		<td class="schedule_event normal">Breakout Session 1</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">4:00 - 4:50pm</td>
-		<td class="schedule_event normal">Breakout Session 2</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">5:00pm</td>
-		<td class="schedule_event minor">Dinner (provided)</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">7:00 - 8:30pm</td>
-		<td class="schedule_event major">Keynote 1</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">8:30 - 10:00pm</td>
-		<td class="schedule_event minor">After Hours</td>
-	</tr>
-</table> 
-<h3><strong>Thursday</strong>, July 26</h3> 
-<table class="schedule"> 
-	<tr>
-		<td class="schedule_time">9:00 - 9:50am</td>
-		<td class="schedule_event normal">Breakout Session 3</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">10:00 - 11:25am</td>
-		<td class="schedule_event major">Keynote 2</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">11:30am</td>
-		<td class="schedule_event minor">Lunch (provided)</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">1:00 - 1:50pm</td>
-		<td class="schedule_event normal">Breakout Session 4</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">2:00pm</td>
-		<td class="schedule_event minor">Snack and Meetup</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">3:00 - 3:50pm</td>
-		<td class="schedule_event normal">Breakout Session 5</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">4:00 - 5:50pm</td>
-		<td class="schedule_event major">Keynote 3</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">6:00pm</td>
-		<td class="schedule_event minor">Dinner (off campus, not provided)</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">7:30 - 10:00pm</td>
-		<td class="schedule_event minor">After Hours</td>
-	</tr>
-</table> 
-<h3><strong>Friday</strong>, July 27</h3> 
-<table class="schedule last"> 
-	<tr>
-		<td class="schedule_time">8:30 - 9:20am</td>
-		<td class="schedule_event normal">Roundtables</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">9:30 - 10:20am</td>
-		<td class="schedule_event normal">Breakout Session 6</td>
-	</tr>
-	<tr>
-		<td class="schedule_time">10:30 - 12:00pm</td>
-		<td class="schedule_event major">Keynote 4</td>
-	</tr>
-</table>
+  <h3><strong>Wednesday</strong>, July 24</h3>
+  <table class="schedule">
+    <tr>
+      <td class="schedule_time">1:00pm</td>
+      <td class="schedule_event minor">Registration</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">3:00 - 3:50pm</td>
+      <td class="schedule_event normal">Breakout Session 1</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">4:00 - 4:50pm</td>
+      <td class="schedule_event normal">Breakout Session 2</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">5:00pm</td>
+      <td class="schedule_event minor">Dinner (provided)</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">7:00 - 8:30pm</td>
+      <td class="schedule_event major">Main Session 1</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">8:30 - 10:00pm</td>
+      <td class="schedule_event minor">After Hours</td>
+    </tr>
+  </table>
+  <h3><strong>Thursday</strong>, July 25</h3>
+  <table class="schedule">
+    <tr>
+      <td class="schedule_time">9:00 - 9:50am</td>
+      <td class="schedule_event normal">Breakout Session 3</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">10:00 - 11:25am</td>
+      <td class="schedule_event major">Main Session 2</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">11:30am</td>
+      <td class="schedule_event minor">Lunch (provided)</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">1:00 - 1:50pm</td>
+      <td class="schedule_event normal">Breakout Session 4</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">2:00pm</td>
+      <td class="schedule_event minor">Snack and Meetup</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">3:00 - 3:50pm</td>
+      <td class="schedule_event normal">Breakout Session 5</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">4:00 - 5:50pm</td>
+      <td class="schedule_event major">Main Session 3</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">6:00pm</td>
+      <td class="schedule_event minor">Dinner (off campus, not provided)</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">7:30 - 10:00pm</td>
+      <td class="schedule_event minor">After Hours</td>
+    </tr>
+  </table>
+  <h3><strong>Friday</strong>, July 26</h3>
+  <table class="schedule last">
+    <tr>
+      <td class="schedule_time">8:30 - 9:20am</td>
+      <td class="schedule_event normal">Roundtables</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">9:30 - 10:20am</td>
+      <td class="schedule_event normal">Breakout Session 6</td>
+    </tr>
+    <tr>
+      <td class="schedule_time">10:30 - 12:00pm</td>
+      <td class="schedule_event major">Main Session 4</td>
+    </tr>
+  </table>
 </div>
 <h2>Maps</h2>
 <div id="maps">
   <img src="/images/maps/map-1.png" alt="Campus Map" />
   <img src="/images/maps/map-2.png" alt="Worship Center - First Floor" />
   <img src="/images/maps/map-3.png" alt="Worship Center - Second Floor" />
-  <img src="/images/maps/map-4.png" alt="Tower - Second Floor" />  
-  <img src="/images/maps/map-5.png" alt="Tower - Third Floor" />  
+  <img src="/images/maps/map-4.png" alt="Tower - Second Floor" />
+  <img src="/images/maps/map-5.png" alt="Tower - Third Floor" />
+  <img src="/images/maps/map-6.png" alt="Tower - Fourth Floor" />
 </div>

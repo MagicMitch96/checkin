@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#20130705033200
+#201307091701
 
 css/style.min.css
 js/application.min.js
@@ -17,6 +17,7 @@ images/maps/map-2.png
 images/maps/map-3.png
 images/maps/map-4.png
 images/maps/map-5.png
+images/maps/map-6.png
 
 NETWORK:
 *
